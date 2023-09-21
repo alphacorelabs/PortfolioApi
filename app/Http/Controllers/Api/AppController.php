@@ -61,5 +61,21 @@ public function contact(Request $request){
                 
 
                 }
+
+    //get project by id
+    public function getProjectById($id){
+        $project = Project::find($id);
+        if(!$project){
+            return response()->json([
+                'status'=>'error',
+                'message'=>'Project not found'
+                ]);
+            }
+            return response()->json([
+                'status'=>'success',
+                'data'=> $project
+                    ]);
+
+                }
         
 }
