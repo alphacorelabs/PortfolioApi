@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification;
 use App\Models\User;
+use App\Models\Project;
 use App\Notifications\Contact;
 use Validator;
 
@@ -49,8 +50,16 @@ public function contact(Request $request){
 
     }
 
-    // upload projects
-    
+    // get projects
+    public function getProjects(){
+        $projects = Project::all();
 
+        return response()->json([
+            'status'=>'success',
+            'data'=> [$projects]
+                ]);
+                
+
+                }
         
 }
